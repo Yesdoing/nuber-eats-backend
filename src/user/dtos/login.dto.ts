@@ -3,11 +3,10 @@ import { BasicOutput } from 'src/common/dtos/output.dto';
 import { User } from '../entities/user.entity';
 
 @InputType()
-export class CreateAccountInput extends PickType(User, [
-  'email',
-  'password',
-  'role',
-]) {}
+export class LoginInput extends PickType(User, ['email', 'password']) {}
 
 @ObjectType()
-export class CreateAccountOutput extends BasicOutput {}
+export class LoginOutput extends BasicOutput {
+  @Field(() => String, { nullable: true })
+  token?: string;
+}
