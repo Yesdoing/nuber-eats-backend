@@ -6,6 +6,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from './user/user.module';
 import { CommonModule } from './common/common.module';
 import { User } from './user/entities/user.entity';
+import { JwtModule } from './jwt/jwt.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { User } from './user/entities/user.entity';
         DB_USERNAME: Joi.string().required(),
         DB_PASSWORD: Joi.string().required(),
         DB_NAME: Joi.string().required(),
+        SECRET_KEY: Joi.string().required(),
       }),
     }),
     GraphQLModule.forRoot({
@@ -36,8 +38,10 @@ import { User } from './user/entities/user.entity';
       logging: true,
       entities: [User],
     }),
+    JwtModule.forRoot(),
     UserModule,
     CommonModule,
+    JwtModule,
   ],
   controllers: [],
   providers: [],
