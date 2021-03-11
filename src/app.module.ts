@@ -9,7 +9,6 @@ import { ConfigModule } from '@nestjs/config';
 import { GraphQLModule } from '@nestjs/graphql';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from './user/user.module';
-import { CommonModule } from './common/common.module';
 import { User } from './user/entities/user.entity';
 import { JwtModule } from './jwt/jwt.module';
 import { JwtMiddleware } from './jwt/jwt.middleware';
@@ -49,7 +48,6 @@ import { JwtMiddleware } from './jwt/jwt.middleware';
       privateKey: process.env.PRIVATE_KEY,
     }),
     UserModule,
-    CommonModule,
   ],
   controllers: [],
   providers: [],
